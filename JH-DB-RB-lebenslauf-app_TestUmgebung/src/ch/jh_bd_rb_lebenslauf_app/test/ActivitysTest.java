@@ -2,7 +2,7 @@ package ch.jh_bd_rb_lebenslauf_app.test;
 
 import com.robotium.solo.Solo;
 
-import ch.jh_bd_rb_lebenslauf_app.daten.Bildung;
+
 import ch.jh_bd_rb_lebenslauf_app.gui.Berufserfahrung;
 import ch.jh_bd_rb_lebenslauf_app.gui.Bild;
 import ch.jh_bd_rb_lebenslauf_app.gui.BildungActivity;
@@ -17,6 +17,7 @@ public class ActivitysTest extends
 
 	private Solo mSimulator;
 
+	@SuppressWarnings("deprecation")
 	public ActivitysTest() {
 		super("ch.jh_bd_rb_lebenslauf_app", StartActivity.class);
 	}

@@ -1,6 +1,7 @@
 package ch.jh_bd_rb_lebenslauf_app.test;
 
 import com.robotium.solo.Solo;
+
 import ch.jh_bd_rb_lebenslauf_app.R;
 import ch.jh_bd_rb_lebenslauf_app.gui.BildungActivity;
 import android.test.ActivityInstrumentationTestCase2;
@@ -13,6 +14,7 @@ public class ActivityBildungTest extends
 	private EditText edt_bildung_schule;
 	private EditText edt_bildung_adresse;
 
+	@SuppressWarnings("deprecation")
 	public ActivityBildungTest() {
 		super("ch.jh_bd_rb_lebenslauf_app", BildungActivity.class);
 	}

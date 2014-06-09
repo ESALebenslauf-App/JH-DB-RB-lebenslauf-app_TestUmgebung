@@ -12,7 +12,7 @@ import android.database.Cursor;
 import android.test.ActivityInstrumentationTestCase2;
 import android.widget.EditText;
 
-public class ActivityBildungTest extends
+public class ActivityBildungDBTest extends
 		ActivityInstrumentationTestCase2<BildungActivity> {
 
 	private Solo mSimulator;
@@ -21,7 +21,7 @@ public class ActivityBildungTest extends
 	long id = 0;
 
 	@SuppressWarnings("deprecation")
-	public ActivityBildungTest() {
+	public ActivityBildungDBTest() {
 		super("ch.jh_bd_rb_lebenslauf_app", BildungActivity.class);
 	}
 
@@ -33,26 +33,37 @@ public class ActivityBildungTest extends
 		edt_bildung_adresse = (EditText) getActivity().findViewById(
 				R.id.edt_bildung_adresse);
 	}
-
-	public void test_1Bildung() {
-		mSimulator.assertCurrentActivity(
-				"Activity BildungActivity.class erwartet",
-				BildungActivity.class);
-		assertTrue("Button // Berufserfahrung/ ist nicht vorhanden",
-				mSimulator.searchButton("Berufserfahrung"));
-		assertTrue("Button // Skills/ ist nicht vorhanden",
-				mSimulator.searchButton("Skills"));
-		assertTrue("Button // Bildung hinzufügen/ ist nicht vorhanden",
-				mSimulator.searchButton("Bildung hinzufügen"));
-		
-		mSimulator.enterText(edt_bildung_adresse, "TEST Adresse Text");
-		mSimulator.enterText(edt_bildung_schule, "TEST Schule Text");
-		mSimulator.clickOnButton("Bildung hinzufügen");
-		mSimulator.enterText(edt_bildung_adresse, "TEST Adresse2 Text");
-		mSimulator.enterText(edt_bildung_schule, "TEST Schule2 Text");
-		mSimulator.clickOnButton("Bildung hinzufügen");
-		mSimulator.clickOnButton("Skills");
+	
+	public void test_1DB_BildungInsert(){
+		BildungDB db = new BildungDB(getActivity());
+		db.open();
+		id = db.insertBildung("anrede", "bildungsart", "schulname", 4624, "ort", "von", "bis");
+		assertTrue(id > 0);
+		db.close();
 	}
+	
+	public void test_2DB_BildungAllCursor(){
+		BildungDB db = new BildungDB(getActivity());
+		db.open();
+		Cursor cursor = db.getAllCursor();
+		int test = cursor.getCount();
+		assertTrue(test > 0);
+
+		db.close();
+	}
+	
+	public void test_3DB_BildungLoudID(){
+		int test = 0;
+		BildungDB db = new BildungDB(getActivity());
+		db.open();
+		Cursor cursor = db.getBildung("2");
+		if (cursor != null) {
+			test = cursor.getCount();
+		}
+		assertTrue(test == 1);
+		db.close();
+	}
+
 	
 	
 

@@ -31,7 +31,7 @@ public class ActivityBildungTest extends
 		edt_bildung_schule = (EditText) getActivity().findViewById(
 				R.id.edt_bildung_schule);
 		edt_bildung_adresse = (EditText) getActivity().findViewById(
-				R.id.edt_bildung_adresse);
+				R.id.edt_bildung_ort);
 	}
 
 	public void test_1Bildung() {

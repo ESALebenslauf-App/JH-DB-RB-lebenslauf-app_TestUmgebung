@@ -1,14 +1,9 @@
 package ch.jh_bd_rb_lebenslauf_app.test;
 
-import java.text.SimpleDateFormat;
-
 import com.robotium.solo.Solo;
 
 import ch.jh_bd_rb_lebenslauf_app.R;
-import ch.jh_bd_rb_lebenslauf_app.daten.BildungDB;
 import ch.jh_bd_rb_lebenslauf_app.gui.BildungActivity;
-import android.content.Context;
-import android.database.Cursor;
 import android.test.ActivityInstrumentationTestCase2;
 import android.widget.EditText;
 

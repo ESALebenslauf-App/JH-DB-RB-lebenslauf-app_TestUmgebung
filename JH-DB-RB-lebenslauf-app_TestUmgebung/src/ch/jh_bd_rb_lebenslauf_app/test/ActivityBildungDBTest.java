@@ -56,7 +56,7 @@ public class ActivityBildungDBTest extends
 	 * getAllBildungen mehr als 2 Eintraege zurueck giebt.
 	 * 
 	 */
-	public void test_2DB_BildungAllCursor() {
+	public void test_2DB_BildungAllBildungen() {
 		int rows;
 		BildungDB db = new BildungDB(getActivity());
 		Bildung bildung01;

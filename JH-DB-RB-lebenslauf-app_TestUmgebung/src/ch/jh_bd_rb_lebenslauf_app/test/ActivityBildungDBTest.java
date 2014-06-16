@@ -2,7 +2,7 @@ package ch.jh_bd_rb_lebenslauf_app.test;
 
 import java.util.ArrayList;
 
-import ch.jh_bd_rb_lebenslauf_app.daten.Bildung;
+import ch.jh_bd_rb_lebenslauf_app.daten.BildungData;
 import ch.jh_bd_rb_lebenslauf_app.daten.BildungDB;
 import ch.jh_bd_rb_lebenslauf_app.daten.LebenslaufDB;
 import ch.jh_bd_rb_lebenslauf_app.gui.BildungActivity;
@@ -25,13 +25,13 @@ public class ActivityBildungDBTest extends
 	 * Fuegt einen Bildung datensatz in die DB und liest diesen wider aus.
 	 */
 	public void test_1DB_BildungInsertLoudID() {
-		Bildung bildung = getBildung();
+		BildungData bildung = getBildung();
 		BildungDB db = new BildungDB(getActivity());
 		db.open();
 		bildung = db.insertBildung(bildung);
 		assertTrue(bildung.getId() > 0);
 
-		Bildung returnBildung = new Bildung(bildung.getId());
+		BildungData returnBildung = new BildungData(bildung.getId());
 		returnBildung = db.getBildung(returnBildung);
 		if (returnBildung != null) {
 			assertTrue(bildung.getNameschule().equals(
@@ -42,7 +42,7 @@ public class ActivityBildungDBTest extends
 		}
 
 		db.deleteBildung(returnBildung);
-		Bildung bildungDelet = new Bildung(returnBildung.getId());
+		BildungData bildungDelet = new BildungData(returnBildung.getId());
 		bildungDelet = db.getBildung(bildungDelet);
 		if (bildungDelet != null) {
 			assertTrue(true);
@@ -59,9 +59,9 @@ public class ActivityBildungDBTest extends
 	public void test_2DB_BildungAllBildungen() {
 		int rows;
 		BildungDB db = new BildungDB(getActivity());
-		Bildung bildung01;
-		Bildung bildung02;
-		Bildung bildung03;
+		BildungData bildung01;
+		BildungData bildung02;
+		BildungData bildung03;
 
 		db.open();
 
@@ -71,7 +71,7 @@ public class ActivityBildungDBTest extends
 		bildung02 = db.insertBildung(getBildung());
 		bildung03 = db.insertBildung(getBildung());
 
-		ArrayList<Bildung> bildungen = db.getAllBildungen();
+		ArrayList<BildungData> bildungen = db.getAllBildungen();
 		int test = bildungen.size();
 		assertTrue(test == rows + 3);
 
@@ -93,10 +93,10 @@ public class ActivityBildungDBTest extends
 		int rowsAll;
 		int rowsGetRows;
 		BildungDB db = new BildungDB(getActivity());
-		Bildung bildung01 = getBildung();
-		Bildung bildung02 = getBildung();
-		Bildung bildung03 = getBildung();
-		Bildung bildung04 = getBildung();
+		BildungData bildung01 = getBildung();
+		BildungData bildung02 = getBildung();
+		BildungData bildung03 = getBildung();
+		BildungData bildung04 = getBildung();
 		bildung04.setNameschule("TEKO");
 
 		db.open();
@@ -110,12 +110,12 @@ public class ActivityBildungDBTest extends
 		bildung03 = db.insertBildung(bildung03);
 		bildung04 = db.insertBildung(bildung04);
 
-		ArrayList<Bildung> bildungen = db.getBildungRows(bildung01,
+		ArrayList<BildungData> bildungen = db.getBildungRows(bildung01,
 				LebenslaufDB.BILDUNG_SCHULNAME);
 		int test = bildungen.size();
 		assertTrue(test == rowsGetRows + 3);
 
-		ArrayList<Bildung> allBildungen = db.getAllBildungen();
+		ArrayList<BildungData> allBildungen = db.getAllBildungen();
 		int testAll = allBildungen.size();
 		assertTrue(testAll == rowsAll + 4);
 
@@ -128,13 +128,13 @@ public class ActivityBildungDBTest extends
 	}
 
 	public void test_4DB_BildungUpdate() {
-		Bildung bildung = getBildung();
+		BildungData bildung = getBildung();
 		BildungDB db = new BildungDB(getActivity());
 		db.open();
 		bildung = db.insertBildung(bildung);
 		assertTrue(bildung.getId() > 0);
 
-		Bildung updateBildung = bildung.clone();
+		BildungData updateBildung = bildung.clone();
 		
 		updateBildung.setNameschule("Test Update Name");
 		updateBildung.setPersID(new Long(4923));
@@ -151,7 +151,7 @@ public class ActivityBildungDBTest extends
 		}
 
 		db.deleteBildung(updateBildung);
-		Bildung bildungDelet = new Bildung(updateBildung.getId());
+		BildungData bildungDelet = new BildungData(updateBildung.getId());
 		bildungDelet = db.getBildung(bildungDelet);
 		if (bildungDelet != null) {
 			assertTrue(true);
@@ -160,8 +160,8 @@ public class ActivityBildungDBTest extends
 		db.close();
 	}
 
-	private Bildung getBildung() {
-		Bildung bildung = new Bildung("bildungsart", "FFHS", "4624", "ort",
+	private BildungData getBildung() {
+		BildungData bildung = new BildungData("bildungsart", "FFHS", "4624", "ort",
 				"von", "bis");
 		bildung.setPersID((long) 4624);
 		return bildung;

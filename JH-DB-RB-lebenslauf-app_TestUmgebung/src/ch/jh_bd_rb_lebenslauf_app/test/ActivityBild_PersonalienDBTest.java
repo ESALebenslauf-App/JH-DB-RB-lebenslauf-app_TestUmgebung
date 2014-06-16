@@ -3,7 +3,7 @@ package ch.jh_bd_rb_lebenslauf_app.test;
 import java.util.ArrayList;
 
 import ch.jh_bd_rb_lebenslauf_app.daten.LebenslaufDB;
-import ch.jh_bd_rb_lebenslauf_app.daten.Personalien;
+import ch.jh_bd_rb_lebenslauf_app.daten.PersonalienData;
 import ch.jh_bd_rb_lebenslauf_app.daten.PersonalienDB;
 import ch.jh_bd_rb_lebenslauf_app.gui.BildActivity;
 import android.test.ActivityInstrumentationTestCase2;
@@ -25,13 +25,13 @@ public class ActivityBild_PersonalienDBTest extends
 	 * Fuegt einen Bildung datensatz in die DB und liest diesen wider aus.
 	 */
 	public void test_1DB_PersonalienInsertLoudID() {
-		Personalien pers = getPersonalien();
+		PersonalienData pers = getPersonalien();
 		PersonalienDB db = new PersonalienDB(getActivity());
 		db.open();
 		pers = db.insertPersonalieng(pers);
 		assertTrue(pers.getID() > 0);
 
-		Personalien returnPers = new Personalien(pers.getID());
+		PersonalienData returnPers = new PersonalienData(pers.getID());
 		returnPers = db.getPersonalien(returnPers);
 
 		if (returnPers != null) {
@@ -41,7 +41,7 @@ public class ActivityBild_PersonalienDBTest extends
 		}
 
 		db.deletePersonalien(returnPers);
-		Personalien deletPers = new Personalien(returnPers.getID());
+		PersonalienData deletPers = new PersonalienData(returnPers.getID());
 		deletPers = db.getPersonalien(deletPers);
 		
 		if (deletPers != null) {
@@ -60,9 +60,9 @@ public class ActivityBild_PersonalienDBTest extends
 		int rows;
 		PersonalienDB db = new PersonalienDB(getActivity());
 
-		Personalien pers01 = getPersonalien();
-		Personalien pers02 = getPersonalien();
-		Personalien pers03 = getPersonalien();
+		PersonalienData pers01 = getPersonalien();
+		PersonalienData pers02 = getPersonalien();
+		PersonalienData pers03 = getPersonalien();
 
 		db.open();
 
@@ -74,7 +74,7 @@ public class ActivityBild_PersonalienDBTest extends
 		
 
 
-		ArrayList<Personalien> personalien = db
+		ArrayList<PersonalienData> personalien = db
 				.getAllPersonalien();
 		int test = personalien.size();
 		assertTrue(test == rows + 3);
@@ -92,10 +92,10 @@ public class ActivityBild_PersonalienDBTest extends
 		int rowsGetRows;
 		PersonalienDB db = new PersonalienDB(getActivity());
 
-		Personalien pers01 = getPersonalien();
-		Personalien pers02 = getPersonalien();
-		Personalien pers03 = getPersonalien();
-		Personalien pers04 = getPersonalien();
+		PersonalienData pers01 = getPersonalien();
+		PersonalienData pers02 = getPersonalien();
+		PersonalienData pers03 = getPersonalien();
+		PersonalienData pers04 = getPersonalien();
 		pers04.setName("Ein anderer Name");
 
 		db.open();
@@ -109,12 +109,12 @@ public class ActivityBild_PersonalienDBTest extends
 		pers04 = db.insertPersonalieng(pers04);
 		
 
-		ArrayList<Personalien> personalienRow = db
+		ArrayList<PersonalienData> personalienRow = db
 				.getPersonalienRows(pers01, LebenslaufDB.PERS_NAME);
 		int testRow = personalienRow.size();
 		assertTrue(testRow == rowsGetRows + 3);
 
-		ArrayList<Personalien> personalien = db
+		ArrayList<PersonalienData> personalien = db
 				.getAllPersonalien();
 		int test = personalien.size();
 		assertTrue(test == rows + 4);
@@ -129,13 +129,13 @@ public class ActivityBild_PersonalienDBTest extends
 	}
 
 	public void test_4DB_PersonalienUpdate() {
-		Personalien pers = getPersonalien();
+		PersonalienData pers = getPersonalien();
 		PersonalienDB db = new PersonalienDB(getActivity());
 		db.open();
 		pers = db.insertPersonalieng(pers);
 		assertTrue(pers.getID() > 0);
 		
-		Personalien updatPers = pers.clone();
+		PersonalienData updatPers = pers.clone();
 		updatPers.setAnrede("Frau");
 		updatPers.setName("test");
 		
@@ -151,7 +151,7 @@ public class ActivityBild_PersonalienDBTest extends
 		}
 
 		db.deletePersonalien(updatPers);
-		Personalien deletPers = new Personalien(updatPers.getID());
+		PersonalienData deletPers = new PersonalienData(updatPers.getID());
 		deletPers = db.getPersonalien(deletPers);
 		
 		if (deletPers != null) {
@@ -161,8 +161,8 @@ public class ActivityBild_PersonalienDBTest extends
 		db.close();
 	}
 
-	private Personalien getPersonalien() {
-		Personalien pers = new Personalien("anrede", "name", "vorname",
+	private PersonalienData getPersonalien() {
+		PersonalienData pers = new PersonalienData("anrede", "name", "vorname",
 				"strasse", "plz", "ort", "date", "bild");
 		return pers;
 	}

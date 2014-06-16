@@ -3,13 +3,13 @@ package ch.jh_bd_rb_lebenslauf_app.test;
 import com.robotium.solo.Solo;
 
 
-import ch.jh_bd_rb_lebenslauf_app.gui.Berufserfahrung;
-import ch.jh_bd_rb_lebenslauf_app.gui.Bild;
+import ch.jh_bd_rb_lebenslauf_app.gui.BerufserfahrungActivity;
+import ch.jh_bd_rb_lebenslauf_app.gui.BildActivity;
 import ch.jh_bd_rb_lebenslauf_app.gui.BildungActivity;
-import ch.jh_bd_rb_lebenslauf_app.gui.Finish;
-import ch.jh_bd_rb_lebenslauf_app.gui.Skills;
+import ch.jh_bd_rb_lebenslauf_app.gui.FinishActivity;
+import ch.jh_bd_rb_lebenslauf_app.gui.SkillsActivity;
 import ch.jh_bd_rb_lebenslauf_app.gui.StartActivity;
-import ch.jh_bd_rb_lebenslauf_app.gui.Zusammenfassung;
+import ch.jh_bd_rb_lebenslauf_app.gui.ZusammenfassungActivity;
 import android.test.ActivityInstrumentationTestCase2;
 
 public class ActivitysTest extends
@@ -35,14 +35,14 @@ public class ActivitysTest extends
 
 		mSimulator.clickOnButton("CV erfassen");
 		mSimulator.assertCurrentActivity("Activity Bild.class erwartet",
-				Bild.class);
+				BildActivity.class);
 		assertTrue("Button // Berufserfahrung/ ist nicht vorhanden",
 				mSimulator.searchButton("Berufserfahrung"));
 		
 		mSimulator.clickOnButton("Berufserfahrung");
 		mSimulator.assertCurrentActivity(
 				"Activity Berufserfahrung.class erwartet",
-				Berufserfahrung.class);
+				BerufserfahrungActivity.class);
 		assertTrue("Button // Bild/ ist nicht vorhanden",
 				mSimulator.searchButton("Bild"));
 		assertTrue("Button // Bildung/ ist nicht vorhanden",
@@ -58,7 +58,7 @@ public class ActivitysTest extends
 		
 		mSimulator.clickOnButton("Skills");
 		mSimulator.assertCurrentActivity("Activity Skills.class erwartet",
-				Skills.class);
+				SkillsActivity.class);
 		assertTrue("Button // Bildung/ ist nicht vorhanden",
 				mSimulator.searchButton("Bildung"));
 		assertTrue("Button // Zusammenfassung/ ist nicht vorhanden",
@@ -66,7 +66,7 @@ public class ActivitysTest extends
 		
 		mSimulator.clickOnButton("Zusammenfassung");
 		mSimulator.assertCurrentActivity("Activity Zusammenfassung.class erwartet",
-				Zusammenfassung.class);
+				ZusammenfassungActivity.class);
 		assertTrue("Button // Skills/ ist nicht vorhanden",
 				mSimulator.searchButton("Skills"));
 		assertTrue("Button // Finish/ ist nicht vorhanden",
@@ -74,14 +74,14 @@ public class ActivitysTest extends
 		
 		mSimulator.clickOnButton("Finish");
 		mSimulator.assertCurrentActivity("Activity Finish.class erwartet",
-				Finish.class);
+				FinishActivity.class);
 		assertTrue("Button // Zusammenfassung/ ist nicht vorhanden",
 				mSimulator.searchButton("Zusammenfassung"));
 		
 		//Zurück Navigieren
 		mSimulator.clickOnButton("Zusammenfassung");
 		mSimulator.assertCurrentActivity("Activity Zusammenfassung.class erwartet",
-				Zusammenfassung.class);
+				ZusammenfassungActivity.class);
 		assertTrue("Button // Skills/ ist nicht vorhanden",
 				mSimulator.searchButton("Skills"));
 		assertTrue("Button // Finish/ ist nicht vorhanden",
@@ -89,7 +89,7 @@ public class ActivitysTest extends
 		
 		mSimulator.clickOnButton("Skills");
 		mSimulator.assertCurrentActivity("Activity Skills.class erwartet",
-				Skills.class);
+				SkillsActivity.class);
 		assertTrue("Button // Bildung/ ist nicht vorhanden",
 				mSimulator.searchButton("Bildung"));
 		assertTrue("Button // Zusammenfassung/ ist nicht vorhanden",
@@ -106,7 +106,7 @@ public class ActivitysTest extends
 		mSimulator.clickOnButton("Berufserfahrung");
 		mSimulator.assertCurrentActivity(
 				"Activity Berufserfahrung.class erwartet",
-				Berufserfahrung.class);
+				BerufserfahrungActivity.class);
 		assertTrue("Button // Bild/ ist nicht vorhanden",
 				mSimulator.searchButton("Bild"));
 		assertTrue("Button // Bildung/ ist nicht vorhanden",
@@ -114,7 +114,7 @@ public class ActivitysTest extends
 		
 		mSimulator.clickOnButton("Bild");
 		mSimulator.assertCurrentActivity("Activity Bild.class erwartet",
-				Bild.class);
+				BildActivity.class);
 		assertTrue("Button // Berufserfahrung/ ist nicht vorhanden",
 				mSimulator.searchButton("Berufserfahrung"));
 	}

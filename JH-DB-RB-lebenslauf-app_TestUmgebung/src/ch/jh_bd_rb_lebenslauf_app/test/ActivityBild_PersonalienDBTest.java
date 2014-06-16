@@ -5,15 +5,15 @@ import java.util.ArrayList;
 import ch.jh_bd_rb_lebenslauf_app.daten.LebenslaufDB;
 import ch.jh_bd_rb_lebenslauf_app.daten.Personalien;
 import ch.jh_bd_rb_lebenslauf_app.daten.PersonalienDB;
-import ch.jh_bd_rb_lebenslauf_app.gui.Bild;
+import ch.jh_bd_rb_lebenslauf_app.gui.BildActivity;
 import android.test.ActivityInstrumentationTestCase2;
 
 public class ActivityBild_PersonalienDBTest extends
-		ActivityInstrumentationTestCase2<Bild> {
+		ActivityInstrumentationTestCase2<BildActivity> {
 
 	@SuppressWarnings("deprecation")
 	public ActivityBild_PersonalienDBTest() {
-		super("ch.jh_bd_rb_lebenslauf_app", Bild.class);
+		super("ch.jh_bd_rb_lebenslauf_app", BildActivity.class);
 	}
 
 	@Override

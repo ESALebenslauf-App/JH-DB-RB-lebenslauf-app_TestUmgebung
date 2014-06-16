@@ -5,15 +5,15 @@ import java.util.ArrayList;
 import ch.jh_bd_rb_lebenslauf_app.daten.BerufserfahrungDB;
 import ch.jh_bd_rb_lebenslauf_app.daten.BerufserfahrungData;
 import ch.jh_bd_rb_lebenslauf_app.daten.LebenslaufDB;
-import ch.jh_bd_rb_lebenslauf_app.gui.Berufserfahrung;
+import ch.jh_bd_rb_lebenslauf_app.gui.BerufserfahrungActivity;
 import android.test.ActivityInstrumentationTestCase2;
 
 public class ActivityBerufserfahrungDBTest extends
-		ActivityInstrumentationTestCase2<Berufserfahrung> {
+		ActivityInstrumentationTestCase2<BerufserfahrungActivity> {
 
 	@SuppressWarnings("deprecation")
 	public ActivityBerufserfahrungDBTest() {
-		super("ch.jh_bd_rb_lebenslauf_app", Berufserfahrung.class);
+		super("ch.jh_bd_rb_lebenslauf_app", BerufserfahrungActivity.class);
 	}
 
 	@Override

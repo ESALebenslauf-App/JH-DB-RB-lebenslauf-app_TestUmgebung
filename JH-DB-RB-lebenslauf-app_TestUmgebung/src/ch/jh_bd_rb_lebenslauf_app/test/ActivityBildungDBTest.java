@@ -29,9 +29,9 @@ public class ActivityBildungDBTest extends
 		BildungDB db = new BildungDB(getActivity());
 		db.open();
 		bildung = db.insertBildung(bildung);
-		assertTrue(bildung.getId() > 0);
+		assertTrue(bildung.getID() > 0);
 
-		BildungData returnBildung = new BildungData(bildung.getId());
+		BildungData returnBildung = new BildungData(bildung.getID());
 		returnBildung = db.getBildung(returnBildung);
 		if (returnBildung != null) {
 			assertTrue(bildung.getNameschule().equals(
@@ -42,7 +42,7 @@ public class ActivityBildungDBTest extends
 		}
 
 		db.deleteBildung(returnBildung);
-		BildungData bildungDelet = new BildungData(returnBildung.getId());
+		BildungData bildungDelet = new BildungData(returnBildung.getID());
 		bildungDelet = db.getBildung(bildungDelet);
 		if (bildungDelet != null) {
 			assertTrue(true);
@@ -97,13 +97,13 @@ public class ActivityBildungDBTest extends
 		BildungData bildung02 = getBildung();
 		BildungData bildung03 = getBildung();
 		BildungData bildung04 = getBildung();
-		bildung04.setNameschule("TEKO");
+		bildung04.setPersID(new Long(999));
 
 		db.open();
 
 		rowsAll = db.getAllBildungen().size();
 		rowsGetRows = db.getBildungRows(bildung01,
-				LebenslaufDB.BILDUNG_SCHULNAME).size();
+				LebenslaufDB.BILDUNG_PERS_ID).size();
 
 		bildung01 = db.insertBildung(bildung01);
 		bildung02 = db.insertBildung(bildung02);
@@ -111,7 +111,7 @@ public class ActivityBildungDBTest extends
 		bildung04 = db.insertBildung(bildung04);
 
 		ArrayList<BildungData> bildungen = db.getBildungRows(bildung01,
-				LebenslaufDB.BILDUNG_SCHULNAME);
+				LebenslaufDB.BILDUNG_PERS_ID);
 		int test = bildungen.size();
 		assertTrue(test == rowsGetRows + 3);
 
@@ -132,7 +132,7 @@ public class ActivityBildungDBTest extends
 		BildungDB db = new BildungDB(getActivity());
 		db.open();
 		bildung = db.insertBildung(bildung);
-		assertTrue(bildung.getId() > 0);
+		assertTrue(bildung.getID() > 0);
 
 		BildungData updateBildung = bildung.clone();
 		
@@ -151,7 +151,7 @@ public class ActivityBildungDBTest extends
 		}
 
 		db.deleteBildung(updateBildung);
-		BildungData bildungDelet = new BildungData(updateBildung.getId());
+		BildungData bildungDelet = new BildungData(updateBildung.getID());
 		bildungDelet = db.getBildung(bildungDelet);
 		if (bildungDelet != null) {
 			assertTrue(true);

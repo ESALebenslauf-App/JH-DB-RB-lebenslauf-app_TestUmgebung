@@ -96,12 +96,12 @@ public class ActivitySkillsDBTest extends
 		SkillsData skill02 = getSkills();
 		SkillsData skill03 = getSkills();
 		SkillsData skill04 = getSkills();
-		skill04.setWas("Was aber geändert");
+		skill04.setPers_id(new Long(999));
 
 		db.open();
 
 		rows = db.getAllSkills().size();
-		rowsGetRows = db.getSkillsRows(skill01, LebenslaufDB.SKILLS_WAS).size();
+		rowsGetRows = db.getSkillsRows(skill01, LebenslaufDB.SKILLS_PERS_ID).size();
 
 		skill01 = db.insertSkills(skill01);
 		skill02 = db.insertSkills(skill02);
@@ -112,7 +112,7 @@ public class ActivitySkillsDBTest extends
 		int test = skills.size();
 		assertTrue(test == rows + 4);
 		
-		ArrayList<SkillsData> skillsRow = db.getSkillsRows(skill01, LebenslaufDB.SKILLS_WAS);
+		ArrayList<SkillsData> skillsRow = db.getSkillsRows(skill01, LebenslaufDB.SKILLS_PERS_ID);
 		int testRow = skillsRow.size();
 		assertTrue(testRow == rowsGetRows + 3);
 

@@ -102,13 +102,13 @@ public class ActivityBerufserfahrungDBTest extends
 		BerufserfahrungData berufserfahrung02 = getBerufserfahrung();
 		BerufserfahrungData berufserfahrung03 = getBerufserfahrung();
 		BerufserfahrungData berufserfahrung04 = getBerufserfahrung();
-		berufserfahrung04.setTxt_adresse("Neue Adresse");
+		berufserfahrung04.setPersID(new Long(99));
 
 		db.open();
 
 		rows = db.getAllBerufserfahrung().size();
 		rowsGetRows = db.getBerufserfarungRows(berufserfahrung01,
-				LebenslaufDB.BERUF_ADRESSE).size();
+				LebenslaufDB.BERUF_PERS_ID).size();
 
 		berufserfahrung01 = db.insertBerufserfahrung(berufserfahrung01);
 		berufserfahrung02 = db.insertBerufserfahrung(berufserfahrung02);
@@ -117,7 +117,7 @@ public class ActivityBerufserfahrungDBTest extends
 
 		ArrayList<BerufserfahrungData> berufserfahrungenRows = db
 				.getBerufserfarungRows(berufserfahrung01,
-						LebenslaufDB.BERUF_ADRESSE);
+						LebenslaufDB.BERUF_PERS_ID);
 		int testRow = berufserfahrungenRows.size();
 		assertTrue(testRow == rowsGetRows + 3);
 

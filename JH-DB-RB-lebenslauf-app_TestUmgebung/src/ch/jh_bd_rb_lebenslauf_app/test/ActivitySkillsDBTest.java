@@ -32,7 +32,7 @@ public class ActivitySkillsDBTest extends
 		assertTrue(sklill.getID() > 0);
 
 		SkillsData returnSkillsData = new SkillsData(sklill.getID());
-		returnSkillsData = db.getBildung(returnSkillsData);
+		returnSkillsData = db.getSkill(returnSkillsData);
 		if (returnSkillsData != null) {
 			assertTrue(sklill.getWas().equals(returnSkillsData.getWas()));
 		} else {
@@ -41,7 +41,7 @@ public class ActivitySkillsDBTest extends
 
 		db.deleteSkills(returnSkillsData);
 		SkillsData deleatSkills = new SkillsData(returnSkillsData.getID());
-		deleatSkills = db.getBildung(deleatSkills);
+		deleatSkills = db.getSkill(deleatSkills);
 		if (deleatSkills != null) {
 			assertTrue(true);
 		}
@@ -134,20 +134,20 @@ public class ActivitySkillsDBTest extends
 		assertTrue(sklill.getID() > 0);
 		
 		SkillsData updatSkill = sklill.clone();
-		updatSkill.setZertifikat("Update");
+		updatSkill.setWas("Hallo Welt");;
 		
 		db.updateSkills(updatSkill);
 
-		updatSkill = db.getBildung(updatSkill);
+		updatSkill = db.getSkill(updatSkill);
 		if (updatSkill != null) {
-			assertTrue(!(sklill.getZertifikat().equals(updatSkill.getZertifikat())));
+			assertTrue(!(sklill.getWas().equals(updatSkill.getWas())));
 		} else {
 			assertTrue(false);
 		}
 
 		db.deleteSkills(updatSkill);
 		SkillsData deleatSkills = new SkillsData(updatSkill.getID());
-		deleatSkills = db.getBildung(deleatSkills);
+		deleatSkills = db.getSkill(deleatSkills);
 		if (deleatSkills != null) {
 			assertTrue(true);
 		}
@@ -156,8 +156,10 @@ public class ActivitySkillsDBTest extends
 	}
 
 	private SkillsData getSkills() {
-		SkillsData skill = new SkillsData("was", "ausmass", "zertifikat");
+		String zert = "TestZertifikat";
+		SkillsData skill = new SkillsData("was", "ausmass", zert);
 		skill.setPers_id(new Long(4624));
+		skill.setZertifikat(zert);
 		return skill;
 	}
 }
